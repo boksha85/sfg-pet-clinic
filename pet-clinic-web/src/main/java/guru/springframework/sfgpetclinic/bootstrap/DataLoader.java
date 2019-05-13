@@ -16,7 +16,8 @@ public class DataLoader implements CommandLineRunner {
     private final SpecialtyService specialtyService;
     private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
@@ -28,7 +29,8 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         int count = petTypeService.findAll().size();
-        if (count == 0) {
+
+        if (count == 0 ){
             loadData();
         }
     }
@@ -66,7 +68,7 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setPetType(savedDogPetType);
         mikesPet.setOwner(owner1);
         mikesPet.setBirthDate(LocalDate.now());
-        mikesPet.setName("Rocky");
+        mikesPet.setName("Rosco");
         owner1.getPets().add(mikesPet);
         ownerService.save(owner1);
 
@@ -76,22 +78,23 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("Japanska 13A");
         owner2.setCity("Belgrade");
         owner2.setTelephone("+38163200200");
-        ownerService.save(owner2);
 
-        Pet fionasPet = new Pet();
-        fionasPet.setPetType(savedCatPetType);
-        fionasPet.setOwner(owner2);
-        fionasPet.setBirthDate(LocalDate.now());
-        fionasPet.setName("Jenny");
-        owner2.getPets().add(fionasPet);
+        Pet fionasCat = new Pet();
+        fionasCat.setName("Just Cat");
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setPetType(savedCatPetType);
+        owner2.getPets().add(fionasCat);
+
         ownerService.save(owner2);
 
         System.out.println("Loaded Owners ....");
 
         Visit catVisit = new Visit();
-        catVisit.setPet(fionasPet);
+        catVisit.setPet(fionasCat);
         catVisit.setDate(LocalDate.now());
         catVisit.setDescription("Sneezy Kitty");
+
         visitService.save(catVisit);
 
         System.out.println("Loaded Visits ....");
@@ -111,6 +114,6 @@ public class DataLoader implements CommandLineRunner {
 
         vetService.save(vet2);
 
-        System.out.println("Loaded Vets ...");
+        System.out.println("Loaded Vets....");
     }
 }
