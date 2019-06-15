@@ -1,6 +1,6 @@
 # Spring Framework Pet Clinic
 
-[![CircleCI](https://circleci.com/gh/boksha85/sfg-pet-clinic/tree/master.svg?style=svg)](https://circleci.com/gh/boksha85/sfg-pet-clinic/tree/master)
+[![CircleCI](https://circleci.com/gh/boksha85/sfg-pet-clinic.svg?style=svg)](https://circleci.com/gh/boksha85/sfg-pet-clinic)
 
 
 
